@@ -3,8 +3,55 @@
 <head>
     <meta charset="utf-8" />
     <title></title>
+    <link href="nagyonszep.css" rel="stylesheet" />
 </head>
 <body>
-    Kurva jó
+    <div id="pascal">
+
+    </div>
+    <script>
+
+        var faktor3 = n => {
+            if (n === 0 || n === 1) {
+                return 1;
+            }
+            else {
+                return n * faktor3(n - 1)
+            }
+        }
+
+        fetch("jokes.json")
+            .then(r => r.json())
+            .then(j => {
+                for (var i = 0; i < j.length; i++) {
+                    console.log(j[i].Text)
+                }
+
+            })
+        var pascal = document.getElementById("pascal");
+        var meret = 10;
+        for (var s = 0; s <= meret; s++) {
+            var ujSor = document.createElement("div")
+            ujSor.classList.add("sor");
+           // ujSor.innerHTML = "*";
+            pascal.appendChild(ujSor);
+            for (var o = 0; o < s; o++) {
+
+                var ujElem = document.createElement("div")
+                ujElem.innerHTML = `${faktor3(s) / (faktor3(o) *(faktor3(s-o)))}`
+                ujElem.classList.add("elem");
+                
+               
+                ujSor.appendChild(ujElem);
+            }
+        }
+        
+
+
+        var tömb = {
+            név:"RM",
+            }
+
+    </script>
 </body>
 </html>
